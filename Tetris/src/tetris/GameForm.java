@@ -4,14 +4,19 @@ import javax.swing.JFrame;
 
 public class GameForm extends JFrame {
 
-   
+    private AreaOfTheGame gamearea;
+
     public GameForm() {
         initComponents();
-        this.add( new AreaOfTheGame(DisplayGameArea,10) );
+        gamearea = new AreaOfTheGame(DisplayGameArea, 10);
+        this.add(gamearea);
+        startGame();
     }
 
-   
-   
+    public void startGame() {
+        new GameThread(gamearea).start();
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -60,7 +65,7 @@ public class GameForm extends JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-       
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

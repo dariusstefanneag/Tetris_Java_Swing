@@ -11,8 +11,12 @@ public class TetrisShape {
     public TetrisShape(int[][] shape, Color color) {
         this.shape = shape;
         this.color = color;
-        x = 3;
-        y = 2;
+
+    }
+
+    public void tetrisShapeSpawned(int gridWidth) {
+        y = -getHeight();
+        x = (gridWidth - getWidth()) / 2;
     }
 
     public int[][] getShape() {

@@ -29,6 +29,7 @@ public class AreaOfTheGame extends JPanel {
 
     public void spawnShape() {
         shape = new TetrisShape(new int[][]{{1, 0}, {1, 0}, {1, 1}}, Color.blue);
+        shape.tetrisShapeSpawned(gridColumns);
     }
 
     public void moveShapeDown() {
