@@ -39,15 +39,15 @@ public class TetrisShape {
         return y;
     }
 
-    public void shapeDown() {
+    public void moveShapeDown() {
         y++;
     }
 
-    public void shapeLeft() {
+    public void moveShapeLeft() {
         x--;
     }
 
-    public void shapeRight() {
+    public void moveShapeRight() {
         x++;
     }
 }

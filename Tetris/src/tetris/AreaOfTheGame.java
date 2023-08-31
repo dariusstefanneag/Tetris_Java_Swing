@@ -31,8 +31,8 @@ public class AreaOfTheGame extends JPanel {
         shape = new TetrisShape(new int[][]{{1, 0}, {1, 0}, {1, 1}}, Color.blue);
     }
 
-    public void shapeDown() {
-        shape.shapeDown();
+    public void moveShapeDown() {
+        shape.moveShapeDown();
         repaint();
     }
 
