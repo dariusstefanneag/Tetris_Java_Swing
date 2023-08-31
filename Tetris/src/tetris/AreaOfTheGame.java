@@ -11,7 +11,7 @@ public class AreaOfTheGame extends JPanel {
     private int gridCellSize;
 
     // declaring coordonate for L shape
-    private int[][] shape = {{1, 0}, {1, 0}, {1, 1}};
+    private TetrisShape shape;
 
     // method for calling a placeholder where i design it in gameForm
     public AreaOfTheGame(JPanel placeholder, int columns) {
@@ -23,21 +23,43 @@ public class AreaOfTheGame extends JPanel {
         gridColumns = columns;
         gridCellSize = this.getBounds().width / gridColumns;
         gridRows = this.getBounds().height / gridCellSize;
+
+        spawnShape();
+    }
+
+    public void spawnShape() {
+        shape = new TetrisShape(new int[][]{{1, 0}, {1, 0}, {1, 1}}, Color.blue);
+    }
+
+    public void shapeDown() {
+        shape.shapeDown();
+        repaint();
     }
 
     // method to create a shape
     private void drawShape(Graphics g) {
-        for (int x = 0; x < shape.length; x++) {
-            for (int y = 0; y < shape[0].length; y++) {
-                if (shape[x][y] == 1) {
+        int shapeHeight = shape.getHeight();
+        int shapeWidth = shape.getWidth();
+        Color colorShape = shape.getColor();
+        int[][] tetrisShape = shape.getShape();
+        int xPos = shape.getX();
+        int yPos = shape.getY();
+        // loop for rows
+        for (int row = 0; row < shapeHeight; row++) {
+            //loop for columns
+            for (int column = 0; column < shapeWidth; column++) {
+                if (tetrisShape[row][column] == 1) {
+                    int x = (xPos + column) * gridCellSize;
+                    int y = (yPos + row) * gridCellSize;
+
                     // setting the color red to the shape
-                    g.setColor(Color.red);
+                    g.setColor(colorShape);
                     // drawing the shape
-                    g.fillRect(y * gridCellSize, x * gridCellSize, gridCellSize, gridCellSize);
+                    g.fillRect(x, y, gridCellSize, gridCellSize);
                     // setting color black for the borders
                     g.setColor(Color.black);
                     // seting some borders to the shape
-                    g.drawRect(y * gridCellSize, x * gridCellSize, gridCellSize, gridCellSize);
+                    g.drawRect(x, y, gridCellSize, gridCellSize);
                 }
             }
         }
