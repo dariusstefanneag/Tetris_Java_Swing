@@ -54,4 +54,8 @@ public class TetrisShape {
     public void moveShapeRight() {
         x++;
     }
+
+    public int getFloor() {
+        return y + getHeight();
+    }
 }

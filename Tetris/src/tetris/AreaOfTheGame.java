@@ -33,8 +33,19 @@ public class AreaOfTheGame extends JPanel {
     }
 
     public void moveShapeDown() {
+
+        if (endFloor() == false) {
+            return;
+        }
         shape.moveShapeDown();
         repaint();
+    }
+
+    private boolean endFloor() {
+        if (shape.getFloor() == gridRows) {
+            return false;
+        }
+        return true;
     }
 
     // method to create a shape
