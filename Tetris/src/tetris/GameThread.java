@@ -14,12 +14,13 @@ public class GameThread extends Thread {
     @Override
     public void run() {
         while(true){
-            try {
-                gamearea.moveShapeDown();
-
-                Thread.sleep(500);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(GameThread.class.getName()).log(Level.SEVERE, null, ex);
+            gamearea.spawnShape();
+            while(gamearea.moveShapeDown()){
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(GameThread.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
     }
