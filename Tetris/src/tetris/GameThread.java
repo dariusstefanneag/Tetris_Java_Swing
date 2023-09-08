@@ -6,9 +6,12 @@ import java.util.logging.Logger;
 public class GameThread extends Thread {
 
     private AreaOfTheGame gamearea;
+    private GameForm gameform;
+    private int score;
 
-    public GameThread(AreaOfTheGame gamearea) {
+    public GameThread(AreaOfTheGame gamearea,GameForm gameform) {
         this.gamearea = gamearea;
+        this.gameform=gameform;
     }
 
     @Override
@@ -22,6 +25,13 @@ public class GameThread extends Thread {
                     Logger.getLogger(GameThread.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+            if(gamearea.gameIsFinished()){
+                System.out.println("GAME OVER");
+                break;
+            }
+            gamearea.setShapeToBackground();
+            score=gamearea.clearLines();
+            gameform.displayScore(score);
         }
     }
 
