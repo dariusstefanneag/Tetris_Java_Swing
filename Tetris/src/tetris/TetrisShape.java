@@ -36,7 +36,7 @@ public class TetrisShape {
         newShapeRotation = 0;
         shape = storedRotation[newShapeRotation];
         y = -getHeight();
-        x = (gridWidth - getWidth()) / 2;
+        x = 4;
     }
 
     public int[][] getShape() {
